@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marine Loading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+  
+<link rel="stylesheet" href="loaderfolder/css/style.css" />
+
+</head>
+<body>
+  <video autoplay muted loop playsinline preload="auto" class="bg-video">
+    <source src="videos/ocean.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="loader">
+    <img src="images/wheel.png" alt="Steering Wheel" class="steering-wheel" />
+    <div class="loading-text">
+      <span id="typed-text"></span>
+      <span class="cursor">|</span>
+    </div>
+  </div>
+
+<script>
+  const text = "Anchors up! Your ocean journey begins now...";
+  let index = 0;
+  const speed = 65;
+  const typedText = document.getElementById("typed-text");
+
+  function typeWriter() {
+    if (index < text.length) {
+      typedText.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeWriter, speed);
+    } else {
+      typedText.classList.add("glow"); // ✨ add shine animation
+    }
+  }
+
+  window.onload = function () {
+    typeWriter();
+    setTimeout(() => {
+      window.location.href = "home.html";  // 🔁 Go to home page
+    }, 5000);
+  };
+</script>
+
+
+</body>
+</html>
